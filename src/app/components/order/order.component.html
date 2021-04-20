@@ -1,1 +1,23 @@
-<p>order works!</p>
+<h1>Orders History</h1>
+<a routerLink="/orders/add">New Order</a>
+
+<table width=100%>
+  <thead>
+  <tr>
+    <th *ngFor="let column of details">{{column}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+        <td>{{order.orderid}}</td>
+        <td>{{order.customerId }}</td>
+        <td>{{order.employeeId}}</td>
+        <td>{{order.products}}</td>
+        <td>{{order.timestamp | date}}</td>
+        <td>${{order.total}}</td>
+        <td>{{order.zipcode}}</td>
+  </tr> 
+  </tbody>
+</table>
+  
+

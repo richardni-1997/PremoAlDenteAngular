@@ -8,7 +8,13 @@ import { ProductComponent } from './components/product/product.component';
 import { OrderComponent } from './components/order/order.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
+import { AddOrderComponent } from './components/order/add-order/add-order.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule }  from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +22,18 @@ import { AppRoutingModule } from './app-routing.module';
     CustomerComponent,
     ProductComponent,
     OrderComponent,
-    ReportsComponent
+    ReportsComponent,
+    OrderDetailsComponent,
+    AddOrderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
