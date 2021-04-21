@@ -14,7 +14,6 @@ import { AddEmployeeComponent } from './components/employee/add-employee/add-emp
 import { UpdateEmployeeComponent } from './components/employee/update-employee/update-employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
 import { AddOrderComponent } from './components/order/add-order/add-order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule }  from '@angular/material/select';
@@ -26,6 +25,7 @@ import { CustomerEditComponent } from './components/customer/edit-customer/edit-
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
+import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
 
 
 
@@ -39,10 +39,10 @@ import { MatRippleModule } from '@angular/material/core';
     ReportsComponent,
     AddEmployeeComponent,
     UpdateEmployeeComponent,
-    OrderDetailsComponent,
     AddOrderComponent,
     AddCustomerComponent,
-    CustomerEditComponent
+    CustomerEditComponent,
+    EditOrderComponent
   ],
   imports: [
     BrowserModule,

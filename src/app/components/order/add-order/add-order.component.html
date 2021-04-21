@@ -15,24 +15,51 @@
     <textarea matInput></textarea>
   </mat-form-field> -->
   <!-- [(ngModel)]="order.customerId" -->
+  
+<div *ngIf="!submitted">
 <form>
     <label>Customer Id:</label><br>
     <input type="number"
-      placeholder="Customer Id"><br>
+    placeholder="Customer Id"
+    [(ngModel)]="order.customerId"
+    name="customerId"><br>
 
     <label>Employee Id:</label><br>
-    <input type="number" placeholder="Employee Id"><br>
+    <input type="number" 
+    placeholder="Employee Id"
+    [(ngModel)]="order.employeeId"
+    name="employeeId"><br>
 
     <label>Products:</label><br>
-    <input type="text" placeholder="Products"><br>
+    <input type="text" 
+    placeholder="Products"
+    [(ngModel)]="order.products"
+    name="products"><br>
 
     <label>Date:</label><br>
-    <input type="datetime-local" placeholder="Date"><br>
+    <input type="datetime-local" 
+    placeholder="Date"
+    [(ngModel)]="order.timestamp"
+    name="timestamp"><br>
 
     <label>Total:</label><br>
-    <input type="number" placeholder="Total"><br>
+    <input type="number" 
+    placeholder="Total"
+    [(ngModel)]="order.total"
+    name="total"><br>
 
     <label>Zipcode:</label><br>
-    <input type="number" placeholder="Zipcode"><br>
+    <input type="number" 
+    placeholder="Zipcode"
+    [(ngModel)]="order.zipcode"
+    name="zipcode"><br>
 
+    <br>
+    <button (click)="saveOrder()" class="btn btn-success">Submit Order</button>
 </form>
+</div>
+
+<div *ngIf=submitted>
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newOrder()">Add Another</button>
+</div>

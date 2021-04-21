@@ -1,7 +1,7 @@
 <h1>Orders History</h1>
-<a routerLink="/orders/add">New Order</a>
-
-<table width=100%>
+<button routerLink="/orders/add">New Order</button>
+<button (click)="refreshOrders()">Back to List</button>
+<table width=100% *ngIf="!currentOrder && !message">
   <thead>
   <tr>
     <th *ngFor="let column of details">{{column}}</th>
@@ -16,8 +16,23 @@
         <td>{{order.timestamp | date}}</td>
         <td>${{order.total}}</td>
         <td>{{order.zipcode}}</td>
+        <button (click)="setActiveOrder(order)">Select</button>
   </tr> 
   </tbody>
 </table>
-  
-
+<table width=100% *ngIf="currentOrder && !message">
+    <tr></tr>
+    <th *ngFor="let column of details">{{column}}</th>
+    <tr>
+    <td>{{currentOrder.orderid}}</td>
+    <td>{{currentOrder.customerId }}</td>
+    <td>{{currentOrder.employeeId}}</td>
+    <td>{{currentOrder.products}}</td>
+    <td>{{currentOrder.timestamp | date}}</td>
+    <td>${{currentOrder.total}}</td>
+    <td>{{currentOrder.zipcode}}</td> 
+    <td><button routerLink="/orders/{{currentOrder.orderid}}">Edit</button>
+    <button (click)="deleteOrder()">Delete</button></td>
+</table>
+ <div *ngIf = message>{{message}}
+ </div>
