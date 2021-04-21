@@ -1,28 +1,6 @@
-<!--navigation with routing-->
-<div>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Premo Pizza</a>
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a routerLink="customers" class="nav-link">Customers</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="employees" class="nav-link">Employees</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="orders" class="nav-link">Orders</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="product" class="nav-link">Products</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="reports" class="nav-link">Reports</a>
-      </li>
-  </div>
-  </nav>
+<a routerLink="customer" class="nav-link">Customers</a>
+<a routerLink="employees" class="nav-link">Employees</a>
+<a routerLink="orders" class="nav-link">Orders</a>
+<a routerLink="product" class="nav-link">Products</a>
+<router-outlet></router-outlet>
 
-  <div class="container mt-3">
-    <router-outlet></router-outlet>
-    
-  </div>
-</div>
