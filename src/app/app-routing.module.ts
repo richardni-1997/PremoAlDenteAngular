@@ -6,7 +6,7 @@ import { AddOrderComponent } from './components/order/add-order/add-order.compon
 import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
 import { OrderComponent } from './components/order/order.component';
 import { ProductComponent } from './components/product/product.component';
-
+// Routes used to setup the paths and what components are loaded.
 const routes: Routes = [
   { path: 'orders', component: OrderComponent },
   { path: 'orders/add', component: AddOrderComponent },
@@ -19,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
+  // RouterModule allows usage of routerLink 
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
