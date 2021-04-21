@@ -1,1 +1,49 @@
-<p>employee works!</p>
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Employees List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let employee of employees; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveEmployee(employee, i)"
+        >
+          {{ employee.name }} - {{employee.active}}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-primary" routerLink="/employees/add">
+        New Employee
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentEmployee">
+        <h4>Employee Details</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentEmployee.name }}
+        </div>
+        <div>
+          <label><strong>Address:</strong></label> {{ currentEmployee.address }}
+        </div>
+        <div>
+          <label><strong>Start Date:</strong></label> {{ currentEmployee.startDate | date}}
+          <br>
+          <label><strong>End Date:</strong></label> {{ currentEmployee.endDate | date}}
+        </div>
+        <div *ngIf="currentEmployee.active">
+          <label><strong>Status: Active</strong></label>
+        </div>
+        <div *ngIf="!currentEmployee.active">
+          <label><strong>Status: Inactive</strong></label>
+        </div>
+        <a class="badge badge-warning" routerLink="/employees/{{ currentEmployee.employeeId }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentEmployee">
+        <br />
+        <p>Please click on an Employee to see details</p>
+      </div>
+    </div>
+</div>
