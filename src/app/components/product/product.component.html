@@ -1,1 +1,14 @@
-<p>product works!</p>
+<table width=100%>
+    <thead>
+    <tr>
+      <th *ngFor="let column of details">{{column}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+          <td>{{product.title}}</td>
+          <td>{{product.description }}</td>
+          <td>${{product.price}}</td>
+    </tr> 
+    </tbody>
+  </table>
