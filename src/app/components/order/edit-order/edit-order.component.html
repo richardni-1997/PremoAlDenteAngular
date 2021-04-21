@@ -1,0 +1,43 @@
+<div>
+    <form>
+        <label>Customer Id:</label><br>
+        <input type="number"
+        placeholder=${{currentOrder.customerId}}
+        [(ngModel)]="currentOrder.customerId"
+        name="customerId"><br>
+    
+        <label>Employee Id:</label><br>
+        <input type="number" 
+        placeholder="Employee Id"
+        [(ngModel)]="currentOrder.employeeId"
+        name="employeeId"><br>
+    
+        <label>Products:</label><br>
+        <input type="text" 
+        placeholder="Products"
+        [(ngModel)]="currentOrder.products"
+        name="products"><br>
+    
+        <label>Date:</label><br>
+        <input type="datetime-local" 
+        placeholder="Date"
+        [(ngModel)]="currentOrder.timestamp"
+        name="timestamp"><br>
+    
+        <label>Total:</label><br>
+        <input type="number" 
+        placeholder="Total"
+        [(ngModel)]="currentOrder.total"
+        name="total"><br>
+    
+        <label>Zipcode:</label><br>
+        <input type="number" 
+        placeholder="Zipcode"
+        [(ngModel)]="currentOrder.zipcode"
+        name="zipcode"><br>
+    
+        <br>
+        <button (click)="updateOrder()" class="btn btn-success">Update</button>
+        <div *ngIf=message>{{message}}</div>
+    </form>
+</div>
