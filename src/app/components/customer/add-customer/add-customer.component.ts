@@ -9,8 +9,8 @@ import { CustomerService } from 'src/app/services/customerservice.service';
 export class AddCustomerComponent implements OnInit {
 
     customer = {
-        name: '',
         phoneNumber: '',
+        name: '',
         address: ''
     };
     submitted = false;
