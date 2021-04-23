@@ -1,8 +1,29 @@
-<h2>Hi</h2>
-<!-- routerLink used for making button navigate to a specified path -->
-<button routerLink="customers" class="nav-link">Customers</button>
-<button routerLink="employees" class="nav-link">Employees</button>
-<button routerLink="orders" class="nav-link">Orders</button>
-<button routerLink="product" class="nav-link">Products</button>
-<router-outlet></router-outlet>
-
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <button mat-icon-button routerLink="customers">Customers</button>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <button mat-icon-button routerLink="employees">Employees</button>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <button mat-icon-button routerLink="orders">Orders</button>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <button mat-icon-button routerLink="product">Product</button>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <button mat-icon-button routerLink="reports">Reports</button>
+        </ng-template>
+    </mat-tab>
+    
+  </mat-tab-group>
+  <router-outlet></router-outlet>

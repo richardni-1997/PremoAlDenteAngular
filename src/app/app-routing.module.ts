@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'customers/:customerId', component: CustomerEditComponent},
   {path: 'customers', component: CustomerComponent},
   {path: 'product', component: ProductComponent},
+  {path: 'reports', component: ReportsComponent}
 
 ];
 

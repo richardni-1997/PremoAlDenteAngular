@@ -1,12 +1,50 @@
-<div class="example-container">
-  <mat-form-field appearance="fill">
-    <mat-label>Enter your email</mat-label>
-    <input matInput placeholder="pat@example.com" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
+
+<div style="width: 400px; margin:auto">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [formControl]="name" [(ngModel)]="employee.name" required>
+      <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput [formControl]="address" [(ngModel)]="employee.address" required>
+      <mat-error *ngIf="address.invalid">{{getErrorAddress()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input matInput placeholder="YYYY/MM/DD" [formControl]="startdate" [(ngModel)]="employee.startDate" required>
+      <mat-error *ngIf="startdate.invalid">{{getErrorStartDate()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <!--<mat-form-field appearance="fill">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="enddate" [(ngModel)]="employee.endDate" [formControl]="enddate"
+      (dateChange)="enddateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+      <mat-datepicker #enddate></mat-datepicker>
+    </mat-form-field>-->
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Satus</mat-label>
+      <mat-select [(value)]="selected" [(ngModel)]="employee.active">
+        <mat-option value="true">Active</mat-option>
+        <mat-option value="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-button style="color:rgb(206,0,00);" (click)="saveEmployee()">
+      <mat-icon>save</mat-icon> Save
+  </button>
 </div>
 
-<div style="width: 400px; margin: auto;">
+
+
+  
+
+
+<!--<div style="width: 400px; margin: auto;">
     <div class="submit-form">
       <div *ngIf="!submitted">
         <div class="form-group">
@@ -72,4 +110,4 @@
         <button class="btn btn-success" (click)="newEmployee()">Add</button>
       </div>
     </div>
-  </div>
+  </div>-->
