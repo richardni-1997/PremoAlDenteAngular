@@ -32,5 +32,5 @@ export class OrderService {
   delete(orderId): Observable<any> {
     return this.http.delete(`${baseUrl}/${orderId}`);
   }
-  
+
 }

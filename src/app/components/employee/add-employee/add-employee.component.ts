@@ -19,6 +19,12 @@ export class AddEmployeeComponent implements OnInit {
   }
   submitted = false;
 
+  selected = '';
+  name = new FormControl('', [Validators.required]);
+  address = new FormControl('', [Validators.required]);
+  startdate = new FormControl('', [Validators.required]);
+
+
   constructor(private employeeService: EmployeeserviceService) { }
 
   ngOnInit(): void {
@@ -55,13 +61,22 @@ export class AddEmployeeComponent implements OnInit {
     };
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
+  getErrorName() {
+    if (this.name.hasError('required')) {
       return 'You must enter a value';
     }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.name.hasError('name') ? 'Not a valid name' : '';
+  }
+  getErrorAddress() {
+    if (this.address.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.address.hasError('address') ? 'Not a valid address' : '';
+  }
+  getErrorStartDate() {
+    if (this.startdate.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.startdate.hasError('startdate') ? 'Not a valid startdate' : '';
   }
 }
