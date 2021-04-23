@@ -1,6 +1,7 @@
 <h1>Orders History</h1>
 <button routerLink="/orders/add">New Order</button>
 <button (click)="refreshOrders()">Back to List</button>
+<button routerLink="/orders/reports">Reports</button>
 <table width=100% *ngIf="!currentOrder && !message">
   <thead>
   <tr>
@@ -16,7 +17,7 @@
         <td>{{order.timestamp | date}}</td>
         <td>${{order.total}}</td>
         <td>{{order.zipcode}}</td>
-        <button (click)="setActiveOrder(order)">Select</button>
+        <td><button (click)="setActiveOrder(order)">Select</button></td>
   </tr> 
   </tbody>
 </table>

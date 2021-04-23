@@ -42,7 +42,7 @@ import { EditOrderComponent } from './components/order/edit-order/edit-order.com
     AddOrderComponent,
     AddCustomerComponent,
     CustomerEditComponent,
-    EditOrderComponent
+    EditOrderComponent,
   ],
   imports: [
     BrowserModule,

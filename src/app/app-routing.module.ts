@@ -10,18 +10,20 @@ import { AddCustomerComponent } from './components/customer/add-customer/add-cus
 import { CustomerComponent } from './components/customer/customer.component';
 import { CustomerEditComponent } from './components/customer/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   {path: 'employees', component: EmployeeComponent},
   {path: 'employees/add', component: AddEmployeeComponent},
   {path: 'employees/:id', component: UpdateEmployeeComponent},
-  { path: 'orders', component: OrderComponent },
+  { path: 'orders', component: OrderComponent }, 
+  { path: 'orders/reports', component: ReportsComponent },
   { path: 'orders/add', component: AddOrderComponent },
   { path: 'orders/:orderId', component: EditOrderComponent },
   {path: 'customers/add', component: AddCustomerComponent},
   {path: 'customers/:customerId', component: CustomerEditComponent},
   {path: 'customers', component: CustomerComponent},
-  {path: 'product', component: ProductComponent}
+  {path: 'product', component: ProductComponent},
 
 ];
 

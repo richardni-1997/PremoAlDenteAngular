@@ -1,1 +1,111 @@
-<p>reports works!</p>
+<!-- <div>
+    <th>Order by Zipcode by Week</th>
+
+    Date: <input type="date">
+
+    Zipcode: <input type="number">
+
+    <table width=100%>
+        <thead>
+            <tr>
+                <th *ngFor="let column of zipcode">{{column}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td><input type="checkbox"></td>
+                <td>{{order.employeeId}}</td>
+                <td>{{order.zipcode}}</td>
+                <td>{{order.timestamp | date}}({{order.timestamp | date:'w'}})</td>
+                <td>${{order.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <th>Order by Employee by Week</th>
+
+    Date: <input type="date">
+
+    Employee Id: <input type="number">
+    <table width=100%>
+        <thead>
+            <tr>
+                <th *ngFor="let column of employee">{{column}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td><input type="checkbox"></td>
+                <td>{{order.employeeId}}</td>
+                <td>{{order.timestamp | date}}({{order.timestamp | date:'w'}})</td>
+                <td>${{order.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<div class="zip-container">
+    <mat-form-field appearance="fill">
+        <mat-label>Filter By Zip</mat-label>
+        <mat-select (selectionChange)="saveZipCode($event)" [value]="zipCode">
+            <mat-option *ngFor="let zip of areas" [value]="zip">
+                {{zip}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+        <input (dateInput)="saveStartDate($event)" matStartDate placeholder="Start date" [value]="startDate">
+        <input (dateInput)="saveEndDate($event)" matEndDate placeholder="End date" [value]="endDate">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>
+<button mat-raised-button color="primary" class="primary" (click)="filterOrders()">Submit</button>
+<button mat-raised-button color="basic" class="primary" (click)="resetFilter()">Clear</button>
+<table mat-table [dataSource]="dataSource">
+    <!-- <thead>
+        <button (click) = "filterOrders()">Filter</button>
+        <tr>
+            <th *ngFor="let column of employee">{{column}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <td><input type="checkbox"></td>
+            <td>{{order.employeeId}}</td>
+            <td>{{order.timestamp | date}}({{order.timestamp | date:'w'}})</td>
+            <td>${{order.total}}</td>
+        </tr>
+    </tbody> -->
+    <ng-container matColumnDef="orderid">
+        <th mat-header-cell *matHeaderCellDef> Order ID </th>
+        <td mat-cell *matCellDef="let order"> {{order.orderid}} </td>
+    </ng-container>
+    <ng-container matColumnDef="customerId">
+        <th mat-header-cell *matHeaderCellDef> Customer ID </th>
+        <td mat-cell *matCellDef="let order"> {{order.customerId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="employeeId">
+        <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+        <td mat-cell *matCellDef="let order"> {{order.employeeId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date/Week </th>
+        <td mat-cell *matCellDef="let order"> {{order.timestamp | date}}({{order.timestamp | date:'w'}}) </td>
+    </ng-container>
+    <ng-container matColumnDef="zipcode">
+        <th mat-header-cell *matHeaderCellDef> Zipcode </th>
+        <td mat-cell *matCellDef="let order"> {{order.zipcode}} </td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Total </th>
+        <td mat-cell *matCellDef="let order"> ${{order.total}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

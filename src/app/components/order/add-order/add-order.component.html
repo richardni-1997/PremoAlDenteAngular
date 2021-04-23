@@ -1,8 +1,4 @@
 <h2>New Order Form</h2>
-<!-- <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>
     <mat-select>
@@ -10,10 +6,7 @@
       <mat-option value="two">Second option</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field> -->
+
   <!-- [(ngModel)]="order.customerId" -->
   
 <div *ngIf="!submitted">
@@ -48,11 +41,18 @@
     [(ngModel)]="order.total"
     name="total"><br>
 
-    <label>Zipcode:</label><br>
+    <!-- <label>Zipcode:</label><br>
     <input type="number" 
     placeholder="Zipcode"
     [(ngModel)]="order.zipcode"
-    name="zipcode"><br>
+    name="zipcode"><br> -->
+    <label>Zipcode:</label><br>
+    <select name="add_zip">
+      <option value=55501 [(ngModel)]="order.zipcode">55501</option>
+      <option value=55502 [(ngModel)]="order.zipcode">55502</option>
+      <option value=55503 [(ngModel)]="order.zipcode">55503</option>
+      <option value=55504 [(ngModel)]="order.zipcode">55504</option>
+    </select>
 
     <br>
     <button (click)="saveOrder()" class="btn btn-success">Submit Order</button>
