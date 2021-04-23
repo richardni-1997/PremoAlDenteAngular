@@ -1,1 +1,117 @@
-<p>reports works!</p>
+<!--<h1>Reports</h1>
+<div *ngFor="let order of orders">
+  {{addEmp(order.employeeId)}}
+</div>
+<div *ngFor="let employee of employees">
+  {{addActive(employee.employeeId, employee.active)}}
+</div>
+
+<button mat-raised-button color="buttonColor" (click)="hideEmployees()">Orders by Employee by Week</button>
+
+<mat-form-field appearance="fill">
+  <mat-label>Select an Employee</mat-label>
+  <mat-select [(value)]="selected">
+    <div *ngFor="let id of isActive">
+      <mat-option (click)="employeeReport(id)">Employee {{id}} Reports</mat-option>
+    </div>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="buttonColor" (click)="hideZipcode()">Orders by Zip Code by Week</button>
+
+<mat-form-field appearance="fill">
+  <mat-label>Select a Zip Code</mat-label>
+  <mat-select [(value)]="selected">
+    <div *ngFor="let zp of zipcodes">
+      <mat-option (click)="zipcodeReport(zp)">Zip Code {{zp}} Reports</mat-option>
+    </div>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="buttonColor" (click)="refreshReports()">Reset</button>
+
+<div id="showEmployee" style="display:none">
+  <span><h1 style="text-align:left">Employee {{employeeTable}}:</h1></span>
+  <table width=100%>
+    <tr>
+      <th *ngFor="let column of clicked">{{column}}</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <ng-template [ngIf]="order.employeeId == employeeTable">
+      <td>{{order.orderid}}</td>
+      <td>{{order.customerId }}</td>
+      <td>{{order.employeeId}}</td>
+      <td>{{order.products}}</td>
+      <td>{{order.timestamp | date}}</td>
+      <td>${{order.total | number:'0.2-2'}}</td>
+      <td>{{order.zipcode}}</td>
+      </ng-template>
+    </tr>
+  </table>
+</div>
+
+<div id="hideemployees" style="display:none">
+<div *ngFor="let id of isActive">
+  <span><h1 style="text-align:left">Employee {{id}}:</h1></span>
+  <table width=100%>
+    <tr>
+      <th *ngFor="let column of clicked">{{column}}</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <ng-template [ngIf]="order.employeeId == id">
+      <td>{{order.orderid}}</td>
+      <td>{{order.customerId }}</td>
+      <td>{{order.employeeId}}</td>
+      <td>{{order.products}}</td>
+      <td>{{order.timestamp | date}}</td>
+      <td>${{order.total | number:'0.2-2'}}</td>
+      <td>{{order.zipcode}}</td>
+      </ng-template>
+    </tr>
+  </table>
+</div>
+</div>
+
+<br>
+
+<div id="showZipcode" style="display:none">
+  <span><h1 style="text-align:left">Zip Code {{zipcodeTable}}:</h1></span>
+  <table width=100%>
+    <tr>
+      <th *ngFor="let column of clicked">{{column}}</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <ng-template [ngIf]="order.zipcode == zipcodeTable">
+      <td>{{order.orderid}}</td>
+      <td>{{order.customerId }}</td>
+      <td>{{order.employeeId}}</td>
+      <td>{{order.products}}</td>
+      <td>{{order.timestamp | date}}</td>
+      <td>${{order.total | number:'0.2-2'}}</td>
+      <td>{{order.zipcode}}</td>
+      </ng-template>
+    </tr>
+  </table>
+</div>
+
+<div id="hidezipcode" style="display:none">
+<div *ngFor="let zip of zipcodes">
+  <span><h1 style="text-align:left">Zip Code {{zip}}:</h1></span>
+  <table width=100%>
+    <tr>
+      <th *ngFor="let column of clicked">{{column}}</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <ng-template [ngIf]="order.zipcode == zip">
+      <td>{{order.orderid}}</td>
+      <td>{{order.customerId }}</td>
+      <td>{{order.employeeId}}</td>
+      <td>{{order.products}}</td>
+      <td>{{order.timestamp | date}}</td>
+      <td>${{order.total | number:'0.2-2'}}</td>
+      <td>{{order.zipcode}}</td>
+      </ng-template>
+    </tr>
+  </table>
+</div>-->
+
