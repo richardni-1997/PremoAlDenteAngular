@@ -1,11 +1,11 @@
 <h2>New Order Form</h2>
-  <mat-form-field appearance="fill">
+  <!-- <mat-form-field appearance="fill">
     <mat-label>Select</mat-label>
     <mat-select>
       <mat-option value="one">First option</mat-option>
       <mat-option value="two">Second option</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <!-- [(ngModel)]="order.customerId" -->
   
@@ -16,6 +16,10 @@
     placeholder="Customer Id"
     [(ngModel)]="order.customerId"
     name="customerId"><br>
+
+    <select name="customerId"  [(ngModel)]="order.customerId">
+      <option *ngFor value=55501 name = "zipcode">55501</option>
+    </select>
 
     <label>Employee Id:</label><br>
     <input type="number" 
@@ -47,11 +51,11 @@
     [(ngModel)]="order.zipcode"
     name="zipcode"><br> -->
     <label>Zipcode:</label><br>
-    <select name="add_zip">
-      <option value=55501 [(ngModel)]="order.zipcode">55501</option>
-      <option value=55502 [(ngModel)]="order.zipcode">55502</option>
-      <option value=55503 [(ngModel)]="order.zipcode">55503</option>
-      <option value=55504 [(ngModel)]="order.zipcode">55504</option>
+    <select name="zipcode"  [(ngModel)]="order.zipcode">
+      <option value=55501 name = "zipcode">55501</option>
+      <option value=55502 name = "zipcode">55502</option>
+      <option value=55503 name = "zipcode">55503</option>
+      <option value=55504 name = "zipcode">55504</option>
     </select>
 
     <br>
