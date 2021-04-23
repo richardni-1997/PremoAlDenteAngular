@@ -61,7 +61,7 @@ import { EditOrderComponent } from './components/order/edit-order/edit-order.com
     MatTableModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatRippleModule
+    // MatRippleModule
     ],
   providers: [],
   bootstrap: [AppComponent]
