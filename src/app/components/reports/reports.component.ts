@@ -23,30 +23,11 @@ export interface Order {
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  
+
   constructor(
     private orderService: OrderService,
     private employeeService: EmployeeserviceService) { }
 
-  /* Backup
-  constructor(
-    private orderService: OrderService,
-    private employeeService:EmployeeserviceService){}
-
-  orders: any;
-  employees: any;
-  clicked = ["OrderId", "CustomerId", "EmployeeId", "Products", "Date", "Total", "Zipcode"];
-  empIds = [];
-  isActive = [];
-  zipcodes = [55501,55502,55503,55504];
-  currentOrder = null;
-  message = '';
-  selected = '';
-  employeeTable = 0;
-  zipcodeTable = 0;  
-
-  ngOnInit(): void {
-    this.retrieveOrders();*/
   orders: any;
   employees: any;
   employID = [];
@@ -69,8 +50,6 @@ export class ReportsComponent implements OnInit {
   endDate: Date = null;
   zipCode: number = null;
   dataSource: MatTableDataSource<Order>;
-
-  //constructor(public orderService: OrderService) { }
 
   ngOnInit(): void {
     this.retrieveOrders();
@@ -170,6 +149,50 @@ export class ReportsComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Order>(tempDate);
   }
 
+  // filterOrders2() {
+  //   let temp = [];
+  //   this.ordersTotal = 0;
+
+  //   if (this.zipcode) {
+  //     this.ordersTotal = 0;
+
+  //     this.orders.forEach(order => {
+  //       if (order.zipcode == this.zipcode) {
+  //         temp.push(order);
+  //         this.ordersTotal += order.total;
+  //       }
+  //     })
+  //   } else {
+  //     temp = this.orders;
+  //   }
+  //   let tempDate = [];
+  //   if (this.startDate && this.endDate) {
+  //     this.ordersTotal = 0;
+  //     temp.forEach(order => {
+  //       if (new Date(order.timestamp) >= this.startDate && new Date(order.timestamp) <= this.endDate) {
+  //         tempDate.push(order);
+  //         this.ordersTotal += order.total;
+  //       }
+  //     })
+  //   } else {
+  //     tempDate = temp;
+  //   }
+  //   this.dataSource = new MatTableDataSource<Order>(tempDate);
+  // }
+  // filterOrders():void {
+  //   this.filteredorders = this.orderService.getAll().pipe(filter(order => order > 5));
+  //   this.filteredorders.getAll().subscribe(
+  //     data => {
+  //       this.orders = data;
+  //       console.log(data);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     });
+  // this.orders.forEach(order => this.orders.pipe.filter(order => order.employeeId = 11));
+  // this.orderService.getAll().subscribe(filter(order => this.selected = false))
+  // }
+
   addEmp(empId): void {
     if (this.employID.includes(empId) == false) {
       this.employID.push(empId);
@@ -197,107 +220,5 @@ export class ReportsComponent implements OnInit {
   displayBlock(hide) {
     hide.style.display === "none" ? hide.style.display = "block" : hide.style.display = "none";
   }
-  // filterOrders():void {
-  //   this.filteredorders = this.orderService.getAll().pipe(filter(order => order > 5));
-  //   this.filteredorders.getAll().subscribe(
-  //     data => {
-  //       this.orders = data;
-  //       console.log(data);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     });
-    // this.orders.forEach(order => this.orders.pipe.filter(order => order.employeeId = 11));
-    // this.orderService.getAll().subscribe(filter(order => this.selected = false))
-  // }
-
-  /* Backup
-  retrieveOrders():void {
-    this.orderService.getAll()
-    .subscribe(
-      data => {
-        this.orders = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
-
-    this.employeeService.getAll()
-    .subscribe(
-      data => {
-        this.employees = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
-  refreshReports():void {
-    this.currentOrder = null;
-    this.message = '';
-    var x = document.getElementById("hideemployees");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    }
-    var x = document.getElementById("hidezipcode");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    }
-    this.employeeReport(0);
-    this.zipcodeReport(0);
-  }
-
-  addEmp(empId):void{
-    if (this.empIds.includes(empId) == false){
-      this.empIds.push(empId);
-    }
-  }
-
-  addActive(empId,empActive):void{
-    if (this.empIds.includes(empId) == true && empActive == true && this.isActive.includes(empId) == false){
-      this.isActive.push(empId);
-    }
-    this.isActive.sort(function(a,b){
-      return a-b;
-    });
-  }
-  //hides all emlpoyees
-  hideEmployees() {
-    var x = document.getElementById("hideemployees");
-    this.displayBlock(x);
-  }
-  //hides all zipcodes
-  hideZipcode() {
-    var x = document.getElementById("hidezipcode");
-    this.displayBlock(x);
-  }
-  //hides individual employees
-  employeeReport(empId){
-    var x = document.getElementById("showEmployee");
-    if (empId == 0){
-      x.style.display = "none";
-    }else{
-      this.selected = empId;
-      this.employeeTable = empId;
-      this.displayBlock(x);
-    }
-  }
-  //hides individual zipcodes
-  zipcodeReport(zipId){
-    var x = document.getElementById("showZipcode");
-    if (zipId == 0){
-      x.style.display = "none";
-    }else{
-      this.selected = zipId;
-      this.zipcodeTable = zipId;
-      this.displayBlock(x);
-    }
-  }
-
-  displayBlock(hide){
-    hide.style.display === "none" ? hide.style.display = "block" : hide.style.display = "none";
-  }*/
 
 }
