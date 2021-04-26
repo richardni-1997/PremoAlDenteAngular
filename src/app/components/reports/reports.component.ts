@@ -1,7 +1,5 @@
-/*import { Component, OnInit } from '@angular/core';
-import { EmployeeserviceService } from 'src/app/services/employeeservice.service';
-import { OrderService } from 'src/app/services/order.service';
 import { Component, OnInit } from '@angular/core';
+import { EmployeeserviceService } from 'src/app/services/employeeservice.service';
 import { OrderService } from 'src/app/services/order.service';
 import { filter } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,75 +23,81 @@ export interface Order {
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  
+
   constructor(
     private orderService: OrderService,
-    private employeeService:EmployeeserviceService){}
+    private employeeService: EmployeeserviceService) { }
 
   orders: any;
   employees: any;
-  clicked = ["OrderId", "CustomerId", "EmployeeId", "Products", "Date", "Total", "Zipcode"];
-  empIds = [];
+  employID = [];
   isActive = [];
-  zipcodes = [55501,55502,55503,55504];
+  zipcodes = [55501, 55502, 55503, 55504];
   currentOrder = null;
   message = '';
   selected = '';
   employeeTable = 0;
-  zipcodeTable = 0;  
-
-  ngOnInit(): void {
-    this.retrieveOrders();
-  orders: Order[] = [];
-  // filteredorders: any;
-  // selected: boolean = false;
+  zipcodeTable = 0;
   ordersTotal = 0;
   displayedColumns: string[] = [
     'orderid', 'customerId', 'employeeId', 'date',
     'zipcode', 'total'];
   areas = [55501, 55502, 55503, 55504];
-  zipcode = ["Select", "Employee Id", "Zipcode", "Date/Week", "Total"];
-  employee = ["Select", "Employee Id", "Date/Week", "Total"];
+  // zipcode = ["Select", "Employee Id", "Zipcode", "Date/Week", "Total"];
+  // employee = ["Select", "Employee Id", "Date/Week", "Total"];
+  employeeId: number = null;
   startDate: Date = null;
   endDate: Date = null;
   zipCode: number = null;
   dataSource: MatTableDataSource<Order>;
 
-  constructor(public orderService: OrderService) { }
-
   ngOnInit(): void {
     this.retrieveOrders();
   }
-  
-  retrieveOrders():void {
+
+  retrieveOrders(): void {
     this.orderService.getAll()
-    .subscribe(
-      data => {
-        this.orders = data;
-        this.dataSource = new MatTableDataSource<Order>(this.orders);
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
+      .subscribe(
+        data => {
+          this.orders = data;
+          this.dataSource = new MatTableDataSource<Order>(this.orders);
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+
+    this.employeeService.getAll()
+      .subscribe(
+        data => {
+          this.employees = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
 
   }
-  saveStartDate(event: MatDatepickerInputEvent<Date>){
+  saveStartDate(event: MatDatepickerInputEvent<Date>) {
     console.log(event.value);
     this.startDate = event.value;
   }
-  saveEndDate(event: MatDatepickerInputEvent<Date>){
+  saveEndDate(event: MatDatepickerInputEvent<Date>) {
     console.log(event.value);
     this.endDate = event.value;
   }
-  saveZipCode(event: MatSelectChange){
+  saveZipCode(event: MatSelectChange) {
     this.zipCode = event.value;
   }
-  resetFilter(){
+  saveEmployeeId(event: MatSelectChange) {
+    this.employeeId = event.value;
+  }
+  resetFilter() {
     this.ordersTotal = 0;
     this.startDate = null;
     this.endDate = null;
     this.zipCode = null;
+    this.employeeId = null;
     this.orders.forEach(order => {
       this.ordersTotal += order.total;
     })
@@ -103,11 +107,11 @@ export class ReportsComponent implements OnInit {
     let temp = [];
     this.ordersTotal = 0;
 
-    if (this.zipCode){
+    if (this.zipCode) {
       this.ordersTotal = 0;
 
       this.orders.forEach(order => {
-        if(order.zipcode == this.zipCode){
+        if (order.zipcode == this.zipCode) {
           temp.push(order);
           this.ordersTotal += order.total;
         }
@@ -115,20 +119,66 @@ export class ReportsComponent implements OnInit {
     } else {
       temp = this.orders;
     }
-    let tempDate = [];
-    if (this.startDate && this.endDate){
+
+    let tempEmp = [];
+    if (this.employeeId) {
       this.ordersTotal = 0;
       temp.forEach(order => {
-        if (new Date(order.timestamp) >= this.startDate && new Date(order.timestamp) <= this.endDate){
+        if (order.employeeId == this.employeeId) {
+          tempEmp.push(order);
+          this.ordersTotal += order.total;
+        }
+      })
+    } else {
+      tempEmp = temp;
+    }
+    // this.dataSource = new MatTableDataSource<Order>(tempEmp);
+
+    let tempDate = [];
+    if (this.startDate && this.endDate) {
+      this.ordersTotal = 0;
+      tempEmp.forEach(order => {
+        if (new Date(order.timestamp) >= this.startDate && new Date(order.timestamp) <= this.endDate) {
           tempDate.push(order);
           this.ordersTotal += order.total;
         }
       })
     } else {
-      tempDate = temp;
+      tempDate = tempEmp;
     }
     this.dataSource = new MatTableDataSource<Order>(tempDate);
   }
+
+  // filterOrders2() {
+  //   let temp = [];
+  //   this.ordersTotal = 0;
+
+  //   if (this.zipcode) {
+  //     this.ordersTotal = 0;
+
+  //     this.orders.forEach(order => {
+  //       if (order.zipcode == this.zipcode) {
+  //         temp.push(order);
+  //         this.ordersTotal += order.total;
+  //       }
+  //     })
+  //   } else {
+  //     temp = this.orders;
+  //   }
+  //   let tempDate = [];
+  //   if (this.startDate && this.endDate) {
+  //     this.ordersTotal = 0;
+  //     temp.forEach(order => {
+  //       if (new Date(order.timestamp) >= this.startDate && new Date(order.timestamp) <= this.endDate) {
+  //         tempDate.push(order);
+  //         this.ordersTotal += order.total;
+  //       }
+  //     })
+  //   } else {
+  //     tempDate = temp;
+  //   }
+  //   this.dataSource = new MatTableDataSource<Order>(tempDate);
+  // }
   // filterOrders():void {
   //   this.filteredorders = this.orderService.getAll().pipe(filter(order => order > 5));
   //   this.filteredorders.getAll().subscribe(
@@ -139,96 +189,36 @@ export class ReportsComponent implements OnInit {
   //     error => {
   //       console.log(error);
   //     });
-    // this.orders.forEach(order => this.orders.pipe.filter(order => order.employeeId = 11));
-    // this.orderService.getAll().subscribe(filter(order => this.selected = false))
+  // this.orders.forEach(order => this.orders.pipe.filter(order => order.employeeId = 11));
+  // this.orderService.getAll().subscribe(filter(order => this.selected = false))
   // }
 
-  retrieveOrders():void {
-    this.orderService.getAll()
-    .subscribe(
-      data => {
-        this.orders = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
-
-    this.employeeService.getAll()
-    .subscribe(
-      data => {
-        this.employees = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
-  refreshReports():void {
-    this.currentOrder = null;
-    this.message = '';
-    var x = document.getElementById("hideemployees");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    }
-    var x = document.getElementById("hidezipcode");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    }
-    this.employeeReport(0);
-    this.zipcodeReport(0);
-  }
-
-  addEmp(empId):void{
-    if (this.empIds.includes(empId) == false){
-      this.empIds.push(empId);
+  addEmp(empId): void {
+    if (this.employID.includes(empId) == false) {
+      this.employID.push(empId);
     }
   }
-
-  addActive(empId,empActive):void{
-    if (this.empIds.includes(empId) == true && empActive == true && this.isActive.includes(empId) == false){
+  addActive(empId, empActive): void {
+    if (this.employID.includes(empId) == true && empActive == true && this.isActive.includes(empId) == false) {
       this.isActive.push(empId);
     }
-    this.isActive.sort(function(a,b){
-      return a-b;
+    this.isActive.sort(function (a, b) {
+      return a - b;
     });
   }
-  //hides all emlpoyees
-  hideEmployees() {
-    var x = document.getElementById("hideemployees");
-    this.displayBlock(x);
-  }
-  //hides all zipcodes
-  hideZipcode() {
-    var x = document.getElementById("hidezipcode");
-    this.displayBlock(x);
-  }
-  //hides individual employees
-  employeeReport(empId){
+  
+  employeeReport(empId) {
     var x = document.getElementById("showEmployee");
-    if (empId == 0){
+    if (empId == 0) {
       x.style.display = "none";
-    }else{
+    } else {
       this.selected = empId;
       this.employeeTable = empId;
       this.displayBlock(x);
     }
   }
-  //hides individual zipcodes
-  zipcodeReport(zipId){
-    var x = document.getElementById("showZipcode");
-    if (zipId == 0){
-      x.style.display = "none";
-    }else{
-      this.selected = zipId;
-      this.zipcodeTable = zipId;
-      this.displayBlock(x);
-    }
-  }
-
-  displayBlock(hide){
+  displayBlock(hide) {
     hide.style.display === "none" ? hide.style.display = "block" : hide.style.display = "none";
   }
 
-}*/
+}

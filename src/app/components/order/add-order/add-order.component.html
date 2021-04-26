@@ -1,67 +1,75 @@
 <h2>New Order Form</h2>
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
-    </mat-select>
-  </mat-form-field> -->
+<div *ngFor="let employee of employees">
+  {{addEmp(employee.employeeId)}} 
+  {{addActive(employee.employeeId, employee.active)}}
+</div>
 
-  <!-- [(ngModel)]="order.customerId" -->
+<div *ngFor="let customer of customers">
+  {{addCust(customer.customerId)}}
+</div>
   
 <div *ngIf="!submitted">
-<form>
-    <label>Customer Id:</label><br>
-    <input type="number"
-    placeholder="Customer Id"
-    [(ngModel)]="order.customerId"
-    name="customerId"><br>
+<form>    
+  <label>Employee ID:</label><br>
+  <mat-form-field appearance="fill">
+    <mat-label>Select an Employee</mat-label>
+    <mat-select name = employeeId [(ngModel)]="order.employeeId">
+      <div *ngFor="let id of isActive">
+        <mat-option name = employeeId value={{id}}>{{id}}</mat-option>
+      </div>
+    </mat-select>
+  </mat-form-field><br>
 
-    <select name="customerId"  [(ngModel)]="order.customerId">
-      <option *ngFor value=55501 name = "zipcode">55501</option>
-    </select>
-
-    <label>Employee Id:</label><br>
-    <input type="number" 
-    placeholder="Employee Id"
-    [(ngModel)]="order.employeeId"
-    name="employeeId"><br>
+  <label>Customer ID:</label><br>
+  <mat-form-field appearance="fill">
+    <mat-label>Select an Customer</mat-label>
+    <mat-select name = customerId [(ngModel)]="order.customerId">
+      <div *ngFor="let id of custID">
+        <mat-option name = customerId value={{id}}>{{id}}</mat-option>
+      </div>
+    </mat-select>
+  </mat-form-field><br>
 
     <label>Products:</label><br>
-    <input type="text" 
-    placeholder="Products"
-    [(ngModel)]="order.products"
-    name="products"><br>
+     <mat-form-field appearance="fill">
+      <mat-label>Products</mat-label>
+      <input matInput type="text" [(ngModel)]="order.products"
+      name="products">
+    </mat-form-field><br>
 
     <label>Date:</label><br>
-    <input type="datetime-local" 
-    placeholder="Date"
-    [(ngModel)]="order.timestamp"
-    name="timestamp"><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput type="datetime-local"
+      [(ngModel)]="order.timestamp"
+      name="timestamp">
+    </mat-form-field><br>
 
     <label>Total:</label><br>
-    <input type="number" 
-    placeholder="Total"
-    [(ngModel)]="order.total"
-    name="total"><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Total</mat-label>
+      <input matInput type="number"
+      [(ngModel)]="order.total"
+      name="total">
+    </mat-form-field><br>
 
-    <!-- <label>Zipcode:</label><br>
-    <input type="number" 
-    placeholder="Zipcode"
-    [(ngModel)]="order.zipcode"
-    name="zipcode"><br> -->
-    <label>Zipcode:</label><br>
-    <select name="zipcode"  [(ngModel)]="order.zipcode">
-      <option value=55501 name = "zipcode">55501</option>
-      <option value=55502 name = "zipcode">55502</option>
-      <option value=55503 name = "zipcode">55503</option>
-      <option value=55504 name = "zipcode">55504</option>
-    </select>
+    <mat-label>Zipcode:</mat-label><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Zipcode</mat-label>
+      <mat-select name = zipcode [(ngModel)]="order.zipcode">
+          <mat-option name = zipcode value=55501>55501</mat-option>
+          <mat-option name = zipcode value=55502>55502</mat-option>
+          <mat-option name = zipcode value=55503>55503</mat-option>
+          <mat-option name = zipcode value=55504>55504</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    
+    <button (click)="saveOrder()" mat-raised-button color="primary">Submit Order</button>
 
-    <br>
-    <button (click)="saveOrder()" class="btn btn-success">Submit Order</button>
+    <!-- <button (click)="saveOrder()" class="btn btn-success">Submit Order</button> -->
 </form>
 </div>
+
 
 <div *ngIf=submitted>
   <h4>You submitted successfully!</h4>
