@@ -26,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -61,6 +62,7 @@ import { EditOrderComponent } from './components/order/edit-order/edit-order.com
     MatTableModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    NgxChartsModule
     // MatRippleModule
     ],
   providers: [],
