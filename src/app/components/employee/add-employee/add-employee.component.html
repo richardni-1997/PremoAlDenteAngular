@@ -1,113 +1,32 @@
-
-<div style="width: 400px; margin:auto">
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput [formControl]="name" [(ngModel)]="employee.name" required>
-      <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Address</mat-label>
-      <input matInput [formControl]="address" [(ngModel)]="employee.address" required>
-      <mat-error *ngIf="address.invalid">{{getErrorAddress()}}</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Start Date</mat-label>
-      <input matInput type="datetime-local" [formControl]="startdate" [(ngModel)]="employee.startDate" required>
-      <mat-error *ngIf="startdate.invalid">{{getErrorStartDate()}}</mat-error>
-    </mat-form-field>
-    <br>
-    <!--<mat-form-field appearance="fill">
-      <mat-label>End Date</mat-label>
-      <input matInput [matDatepicker]="enddate" [(ngModel)]="employee.endDate" [formControl]="enddate"
-      (dateChange)="enddateChange($event)">
-      <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
-      <mat-datepicker #enddate></mat-datepicker>
-    </mat-form-field>-->
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Satus</mat-label>
-      <mat-select [(value)]="selected" [(ngModel)]="employee.active">
-        <mat-option value="true">Active</mat-option>
-        <mat-option value="false">Inactive</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
-    <button mat-button style="color:rgb(206,0,00);" (click)="saveEmployee()">
-      <mat-icon>save</mat-icon> Save
+<div style="width: 400px; margin:auto" *ngIf=!submitted>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="name" [(ngModel)]="employee.name" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input matInput [formControl]="address" [(ngModel)]="employee.address" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Start Date</mat-label>
+    <input matInput type="datetime-local" [formControl]="startdate" [(ngModel)]="employee.startDate" required>
+  </mat-form-field>
+  <br>
+    <mat-label>Status : Active</mat-label>
+  <br>
+  <button mat-button style="color:rgb(206,0,00);" (click)="saveEmployee()">
+    <mat-icon>save</mat-icon> Save
   </button>
+  <mat-error *ngIf="name.invalid">{{getErrorName()}}</mat-error>
+  <mat-error *ngIf="address.invalid">{{getErrorAddress()}}</mat-error>
+  <mat-error *ngIf="startdate.invalid">{{getErrorStartDate()}}</mat-error>
 </div>
 
-
-
-  
-
-
-<!--<div style="width: 400px; margin: auto;">
-    <div class="submit-form">
-      <div *ngIf="!submitted">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            [(ngModel)]="employee.name"
-            name="name"
-          />
-        </div>
-
-       
-
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input
-            class="form-control"
-            id="address"
-            required
-            [(ngModel)]="employee.address"
-            name="address"
-          />
-        </div>
-
-        <div class="form-group">
-            <label for="startDate">Start Date</label>
-            <input
-              type="date"
-              class="form-control"
-              id="startDate"
-              [(ngModel)]="employee.startDate"
-              name="startDate"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="endDate">End Date</label>
-            <input
-              type="date"
-              class="form-control"
-              id="endDate"
-              [(ngModel)]="employee.endDate"
-              name="endDate"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="active">Status</label>
-            <select class="form-control" name="status" [(ngModel)]="employee.active">
-               <option [value]="true" >Active</option>
-               <option [value]="false" >Inactive</option>
-            </select>
-          </div>
-  
-        <button (click)="saveEmployee()" class="btn btn-success">Submit</button>
-      </div>
-  
-      <div *ngIf="submitted">
-        <h4>You submitted successfully!</h4>
-        <button class="btn btn-success" (click)="newEmployee()">Add</button>
-      </div>
-    </div>
-  </div>-->
+<div *ngIf=submitted>
+  <h4 style="color:rgb(206,0,00);width: 400px; margin:auto">Employee was added successfully</h4>
+<button mat-button style="color:rgb(206,0,00);" (click)="newEmployee()">
+  <mat-icon>portrait</mat-icon> Add Another Employee
+</button>
+</div>

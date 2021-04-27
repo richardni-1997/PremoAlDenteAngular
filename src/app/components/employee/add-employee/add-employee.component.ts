@@ -63,19 +63,19 @@ export class AddEmployeeComponent implements OnInit {
 
   getErrorName() {
     if (this.name.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter a Name';
     }
     return this.name.hasError('name') ? 'Not a valid name' : '';
   }
   getErrorAddress() {
     if (this.address.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter an Address';
     }
     return this.address.hasError('address') ? 'Not a valid address' : '';
   }
   getErrorStartDate() {
     if (this.startdate.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter a Start Date';
     }
     return this.startdate.hasError('startdate') ? 'Not a valid startdate' : '';
   }

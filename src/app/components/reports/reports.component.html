@@ -3,11 +3,8 @@
 
 <!-- <div>
     <th>Order by Zipcode by Week</th>
-
     Date: <input type="date">
-
     Zipcode: <input type="number">
-
     <table width=100%>
         <thead>
             <tr>
@@ -25,12 +22,9 @@
         </tbody>
     </table>
 </div>
-
 <div>
     <th>Order by Employee by Week</th>
-
     Date: <input type="date">
-
     Employee Id: <input type="number">
     <table width=100%>
         <thead>
@@ -67,7 +61,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Filter By Employee</mat-label>
         <mat-select (selectionChange)="saveEmployeeId($event)" [value]="employeeId">
-            <div *ngFor="let id of isActive">
+            <div *ngFor="let id of employID">
                 <mat-option name=employeeId value={{id}}>{{id}}</mat-option>
             </div>
         </mat-select>
