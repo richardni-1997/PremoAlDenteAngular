@@ -12,7 +12,8 @@ export class EmployeeComponent implements OnInit {
   currentEmployee = null;
   currentIndex = -1;
   active = null;
-
+  details = ["Name", "Start Date","End Date","Status"];
+  
   constructor(private employeeService: EmployeeserviceService) { }
 
   ngOnInit(): void {

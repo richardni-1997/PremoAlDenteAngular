@@ -1,16 +1,23 @@
 <div class="list row">
     <div class="col-md-6">
       <h4>Employees List</h4>
-      <ul class="list-group">
-        <li
-          class="list-group-item"
-          *ngFor="let employee of employees; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveEmployee(employee, i)"
-        >
-          {{ employee.name }} - {{employee.active}}
-        </li>
-      </ul>
+      <table width=100%>
+        <thead>
+        <tr>
+          <th *ngFor="let column of details">{{column}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of employees; let i = index">
+              <td>{{employee.name}}</td>
+              <td>{{employee.startDate | date}}</td>
+              <td>{{employee.endDate | date}}</td>
+              <td>{{employee.active}}</td>
+              <td><button [class.active]="i == currentIndex"
+                (click)="setActiveEmployee(employee, i)">Select</button></td>
+        </tr> 
+        </tbody>
+      </table>
   
       <button class="m-3 btn btn-sm btn-primary" routerLink="/employees/add">
         New Employee
