@@ -61,7 +61,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Filter By Employee</mat-label>
         <mat-select (selectionChange)="saveEmployeeId($event)" [value]="employeeId">
-            <div *ngFor="let id of isActive">
+            <div *ngFor="let id of employID">
                 <mat-option name=employeeId value={{id}}>{{id}}</mat-option>
             </div>
         </mat-select>
