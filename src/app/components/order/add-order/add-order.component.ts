@@ -16,8 +16,9 @@ export class AddOrderComponent implements OnInit {
     employeeId: '',
     timestamp: '',
     total: '',
-    zipcode: '',
     products: '',
+    zipcode: '',
+    
   };
   customers: any;
   employees: any;

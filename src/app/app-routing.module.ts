@@ -11,6 +11,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CustomerEditComponent } from './components/customer/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 const routes: Routes = [
   {path: 'employees', component: EmployeeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'customers/:customerId', component: CustomerEditComponent},
   {path: 'customers', component: CustomerComponent},
   {path: 'product', component: ProductComponent},
-  {path: 'reports', component: ReportsComponent}
+  {path: 'reports', component: ReportsComponent},
+  {path: 'charts', component: BarChartComponent}
 
 ];
 

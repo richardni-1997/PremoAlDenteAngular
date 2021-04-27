@@ -26,7 +26,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
-
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { EditOrderComponent } from './components/order/edit-order/edit-order.com
     AddCustomerComponent,
     CustomerEditComponent,
     EditOrderComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { EditOrderComponent } from './components/order/edit-order/edit-order.com
     MatTableModule,
     MatSelectModule,
     BrowserAnimationsModule,
+    NgxChartsModule
     // MatRippleModule
     ],
   providers: [],
