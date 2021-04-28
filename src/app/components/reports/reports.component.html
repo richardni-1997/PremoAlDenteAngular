@@ -1,47 +1,3 @@
-<!-- <button mat-raised-button color="buttonColor" (click)="refreshReports()">Reset</button> -->
-
-
-<!-- <div>
-    <th>Order by Zipcode by Week</th>
-    Date: <input type="date">
-    Zipcode: <input type="number">
-    <table width=100%>
-        <thead>
-            <tr>
-                <th *ngFor="let column of zipcode">{{column}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let order of orders">
-                <td><input type="checkbox"></td>
-                <td>{{order.employeeId}}</td>
-                <td>{{order.zipcode}}</td>
-                <td>{{order.timestamp | date}}({{order.timestamp | date:'w'}})</td>
-                <td>${{order.total}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div>
-    <th>Order by Employee by Week</th>
-    Date: <input type="date">
-    Employee Id: <input type="number">
-    <table width=100%>
-        <thead>
-            <tr>
-                <th *ngFor="let column of employee">{{column}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let order of orders">
-                <td><input type="checkbox"></td>
-                <td>{{order.employeeId}}</td>
-                <td>{{order.timestamp | date}}({{order.timestamp | date:'w'}})</td>
-                <td>${{order.total}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
 <div *ngFor="let employee of employees">
     {{addEmp(employee.employeeId)}}
     {{addActive(employee.employeeId, employee.active)}}
@@ -67,15 +23,6 @@
         </mat-select>
     </mat-form-field>
 
-    <!-- <mat-form-field appearance="fill">
-        <mat-label>Filter By Employee</mat-label>
-        <mat-select (selectionChange)="saveZipCode($event)" [value]="zipCode">
-            <mat-option *ngFor="let zip of areas" [value]="zip">
-                {{zip}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field> -->
-
     <mat-form-field appearance="fill">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
@@ -90,20 +37,6 @@
 <button mat-raised-button color="basic" class="primary" (click)="resetFilter()">Clear</button>
 
 <table mat-table [dataSource]="dataSource">
-    <!-- <thead>
-        <button (click) = "filterOrders()">Filter</button>
-        <tr>
-            <th *ngFor="let column of employee">{{column}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let order of orders">
-            <td><input type="checkbox"></td>
-            <td>{{order.employeeId}}</td>
-            <td>{{order.timestamp | date}}({{order.timestamp | date:'w'}})</td>
-            <td>${{order.total}}</td>
-        </tr>
-    </tbody> -->
     <ng-container matColumnDef="orderid">
         <th mat-header-cell *matHeaderCellDef> Order ID </th>
         <td mat-cell *matCellDef="let order"> {{order.orderid}} </td>
