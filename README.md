@@ -3,10 +3,11 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
 ## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Run `npm i` to install all of the dependencies.
-
+1. Download zip file and open in VSCode
+2. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+3. Run `npm i` to install all of the dependencies.
+4. Run `ng add @angular/material` to install Angular Material to be able to see it on your application.
+5. Run `npm i @swimlane/ngx-charts --save` to import ngx-charts and be able to display it on your application.
 
 ## Further help
 
