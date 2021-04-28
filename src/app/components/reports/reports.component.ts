@@ -43,8 +43,6 @@ export class ReportsComponent implements OnInit {
     'orderid', 'customerId', 'employeeId', 'date',
     'zipcode', 'total'];
   areas = [55501, 55502, 55503, 55504];
-  // zipcode = ["Select", "Employee Id", "Zipcode", "Date/Week", "Total"];
-  // employee = ["Select", "Employee Id", "Date/Week", "Total"];
   employeeId: number = null;
   startDate: Date = null;
   endDate: Date = null;
@@ -132,7 +130,6 @@ export class ReportsComponent implements OnInit {
     } else {
       tempEmp = temp;
     }
-    // this.dataSource = new MatTableDataSource<Order>(tempEmp);
 
     let tempDate = [];
     if (this.startDate && this.endDate) {
@@ -148,50 +145,6 @@ export class ReportsComponent implements OnInit {
     }
     this.dataSource = new MatTableDataSource<Order>(tempDate);
   }
-
-  // filterOrders2() {
-  //   let temp = [];
-  //   this.ordersTotal = 0;
-
-  //   if (this.zipcode) {
-  //     this.ordersTotal = 0;
-
-  //     this.orders.forEach(order => {
-  //       if (order.zipcode == this.zipcode) {
-  //         temp.push(order);
-  //         this.ordersTotal += order.total;
-  //       }
-  //     })
-  //   } else {
-  //     temp = this.orders;
-  //   }
-  //   let tempDate = [];
-  //   if (this.startDate && this.endDate) {
-  //     this.ordersTotal = 0;
-  //     temp.forEach(order => {
-  //       if (new Date(order.timestamp) >= this.startDate && new Date(order.timestamp) <= this.endDate) {
-  //         tempDate.push(order);
-  //         this.ordersTotal += order.total;
-  //       }
-  //     })
-  //   } else {
-  //     tempDate = temp;
-  //   }
-  //   this.dataSource = new MatTableDataSource<Order>(tempDate);
-  // }
-  // filterOrders():void {
-  //   this.filteredorders = this.orderService.getAll().pipe(filter(order => order > 5));
-  //   this.filteredorders.getAll().subscribe(
-  //     data => {
-  //       this.orders = data;
-  //       console.log(data);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     });
-  // this.orders.forEach(order => this.orders.pipe.filter(order => order.employeeId = 11));
-  // this.orderService.getAll().subscribe(filter(order => this.selected = false))
-  // }
 
   addEmp(empId): void {
     if (this.employID.includes(empId) == false) {
