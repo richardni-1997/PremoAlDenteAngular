@@ -2,17 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { OrderService } from "src/app/services/order.service";
 import { Order } from "../order/model/order.model";
 
-//  export interface Order {
-//     timestamp: Date,
-//     total: DoubleRange,
-//     zipcode: number,
-//     constructor(timestamp: Date, total: DoubleRange, zipcode: number){
-//       this.timestamp = timestamp;
-//       this.total = total;
-//       this.zipcode = zipcode;
-//     };
-//   };
-
 @Component({
   selector: "app-bar-chart",
   templateUrl: "./bar-chart.component.html",
@@ -51,17 +40,6 @@ export class BarChartComponent implements OnInit {
     {name: '2019', value:18000},
     {name: '2020', value:20000}
   ];
-
-  // legend: boolean = true;
-  // showLabels: boolean = true;
-  // animations: boolean = true;
-  // xAxis: boolean = true;
-  // yAxis: boolean = true;
-  // showYAxisLabel: boolean = true;
-  // showXAxisLabel: boolean = true;
-  // xAxisLabel: string = "Year";
-  // yAxisLabel: string = "Population";
-  // timeline: boolean = true;
 
   colorScheme = {
     domain: ["#5AA454", "#E44D25", "#CFC0BB", "#7aa3e5", "#a8385d", "#aae3f5"]
