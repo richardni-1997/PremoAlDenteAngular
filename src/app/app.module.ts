@@ -63,7 +63,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatSelectModule,
     BrowserAnimationsModule,
     NgxChartsModule
-    // MatRippleModule
     ],
   providers: [],
   bootstrap: [AppComponent]
